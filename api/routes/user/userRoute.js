@@ -24,15 +24,15 @@ const secret = require('../../secrets.js').jwtSecret;
 
 
 // TESTING TO SEE IF AUTH WORKS
-// router.get('/', restrict, (req, res) => {
-//     db('riders')
-//     .then(users => {
-//         res.status(200).json(users)
-//     })
-//     .catch(error => {
-//         res.status(500).json(error)
-//     })
-// })
+router.get('/', restrict, (req, res) => {
+    db('riders')
+    .then(users => {
+        res.status(200).json(users)
+    })
+    .catch(error => {
+        res.status(500).json(error)
+    })
+})
 
 
 
