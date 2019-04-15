@@ -9,7 +9,7 @@ exports.up = function(knex) {
         tbl.string('password', 128).notNullable()
         tbl.string('phone').notNullable().unique()
         tbl.boolean('driver').defaultTo(false)
-        // tbl.string('location', 128).notNullable()
+        tbl.string('location', 128).notNullable()
       //   tbl.integer('price')
   
     })
