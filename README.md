@@ -113,14 +113,14 @@ _HTTP method:_ **[POST]**
 
 | name             | type   | required | description                                                           |
 | ---------------- | ------ | -------- | --------------------------------------------------------------------- |
-| `username` | String | Yes      | Must match a username, phone number in the database         |
-| `password`       | String | Yes      | Must match a password in the database corresponding to above username |
+| `phone`          | String | Yes      | Must match a phone number in the database         |
+| `password`       | String | Yes      | Must match a password in the database corresponding to phone|
 
 _example:_
 
 ```
 {
-  username: "greatRider",
+  phone: "4125968345",
   password: "password"
 }
 ```
@@ -134,8 +134,7 @@ _example:_
 ```
 {
     "message": "Welcome greatRider!",
-    "driver": 0,
-    "phone": 4125967234
+    "phone": 4125967234,
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdyZWF0UmlkZXIiLCJwaG9uZSI6IjMyMSIsImRyaXZlciI6MCwiaWF0IjoxNTU1NDI3NDU2LCJleHAiOjE1NTU1MTM4NTZ9.LPMSHq757G9JNoJPU_0Ifq1u3uJvipHqDVTHKYej6uY"
 }
 ```
@@ -214,7 +213,7 @@ _HTTP method:_ **[PUT]**
 
 #### Response
 
-##### 202 (Accepted)
+##### 201 (Created)
 
 ```
 {
@@ -234,7 +233,7 @@ _HTTP method:_ **[DELETE]**
 
 #### Response
 
-##### 202 (Accepted)
+##### 201 (Created)
 
 ```
 {
@@ -244,3 +243,115 @@ _HTTP method:_ **[DELETE]**
 
 ---
 
+
+# DRIVER ROUTES
+
+## **GET DRIVERS**
+
+_Method Url:_ `/api/drivers`
+
+_HTTP method:_ **[GET]**
+
+#### Response
+
+##### 200 (OK)
+
+```
+[
+    {
+    "driver_id": 1,
+    "username": "greatDriver",
+    "phone": "4125967234",
+    "password": "password",
+    "driver": 1
+  },
+    {
+    "driver_id": 2,
+    "username": "greatDriver2",
+    "phone": "4125967345",
+    "password": "password",
+    "driver": 1
+  },
+    {
+    "driver_id": 3,
+    "username": "greatDriver3",
+    "phone": "4125967456",
+    "password": "password",
+    "driver": 1
+  },
+]
+```
+
+---
+
+## **GET DRIVER BY ID**
+
+_Method Url:_ `/api/driver/:id`
+
+_Protected Route_ | Driver Only
+
+_HTTP method:_ **[GET]**
+
+#### Response
+
+##### 200 (OK)
+
+```
+  {
+    "driver_id": 1,
+    "username": "greatDriver",
+    "reviews": [
+        {
+            "rider_id": 2,
+            "review": "great ride",
+            "rating": 5
+        },
+        {
+          "rider_id": 5,
+          "review": "way too bumpy, water broke on way to hospital",
+          "rating": 2
+        }
+    ] 
+```
+
+---
+
+## **UPDATE DRIVER**
+
+_Method Url:_ `/api/driver/:id`
+
+_Protected Route_ | Driver Only
+
+_HTTP method:_ **[PUT]**
+
+#### Response
+
+##### 201 (Created)
+
+```
+{
+    "message": "Update successful"
+}
+```
+
+---
+
+## **DELETE DRIVER**
+
+_Method Url:_ `/api/driver/:id`
+
+_Protected Route_ | Driver Only
+
+_HTTP method:_ **[DELETE]**
+
+#### Response
+
+##### 201 (Created)
+
+```
+{
+    "message": "Driver account removed successfully"
+}
+```
+
+---
