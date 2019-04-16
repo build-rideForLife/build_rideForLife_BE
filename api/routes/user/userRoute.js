@@ -9,7 +9,7 @@ const restrict = require('../auth/restricted-middleware')
 
 
 // TESTING TO SEE IF AUTH WORKS
-router.get('/',  (req, res) => {
+router.get('/',  restrict, (req, res) => {
     db('riders')
     .then(users => {
         res.status(200).json(users)
@@ -20,7 +20,7 @@ router.get('/',  (req, res) => {
 })
 
 // get by id
-router.get('/:id',  (req, res) => {
+router.get('/:id',  restrict,(req, res) => {
     db('riders')
     .select('riders_id', 'username', 'phone')
     .where({ riders_id: req.params.id})
