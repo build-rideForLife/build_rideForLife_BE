@@ -20,7 +20,7 @@ router.get('/',  (req, res) => {
 })
 
 // get by id
-router.get('/:id', restrict, (req, res) => {
+router.get('/:id',  (req, res) => {
     db('riders')
     .select('riders_id', 'username', 'phone')
     .where({ riders_id: req.params.id})
