@@ -15,30 +15,24 @@ router.get('/',  (req, res) => {
     })
 })
 
-//Get Driver Profile By ID
-// router.get('/:id',  (req, res) => {
-//     db('drivers')
-//     .select('driver_id', 'username', 'phone')
-//     .where({ driver_id: req.params.id})
-//     .first()
-//     .then(driver => {
-//         res.status(200).json(driver)
-//     })
-//     .catch(err => {
-//         res.json(err)
-//     })
-// })
-
-router.get('/:id', (req,res) => {
-    const { id } = req.params
-    db('reviews')
-    .where({'reviews.review_id': id})
-    .join('drivers', {'reviews.review_id': 'drivers.driver_id'})
-    .select('reviews.review', 'reviews.rating', 'drivers.username')
-    .then(review => {
-        res.status(200).json(review)
-    }).catch(error => {
-        res.status(500).json(error)
+//Gets Driver by ID and Reviews
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    db('drivers')
+    .where({'drivers.driver_id': id})
+    .first()
+    .select('driver_id', 'username', 'email')
+    .then(driver => {
+        db('reviews').where({driver_id: id})
+        .join('riders', {'reviews.rider_id': 'riders.riders_id'})
+        .select('riders.username', 'reviews.rating','reviews.review')
+        .then(review => {
+         driver.review = review
+            res.status(200).json(driver)
+    })
+})
+    .catch(error => {
+        res.status(500).json({message: `there was an error retrieving the data - ${error}`})
     })
 })
 
@@ -62,12 +56,12 @@ router.put('/:id', (req, res) => {
     })
 })
 
-//Post review
-router.post('/:id', (req, res) => {
-    const {driver_id, rider_id, rating, review}= req.body
+//Post a review
+router.post('/reviews', (req, res) => {
+    const {driver_id, rating, review, rider_id}= req.body
     db('reviews')
     .where({ driver_id: req.params.id})
-    .insert({driver_id, rider_id, rating, review})
+    .insert({driver_id, rating, review, rider_id})
     .then(count => {
         if(count > 0) {
             res.status(200).json(count)

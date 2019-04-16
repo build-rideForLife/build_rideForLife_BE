@@ -37,7 +37,6 @@ router.post('/register', (req, res) => {
         .insert(user)
         .then(ids => {
           const id = ids[0]
-          
           db('drivers')
           .where({phone: user.phone})
           .then(drivers => {
