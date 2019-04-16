@@ -1,6 +1,8 @@
 # build_rideForLife_BE
 Ride For Life Backend
 
+SERVER: https://ride-for-life.herokuapp.com/
+
 
 # AUTH ROUTES
 
