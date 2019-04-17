@@ -64,7 +64,7 @@ router.post('/reviews', restrict, (req, res) => {
     .insert({driver_id, rating, review, rider_id})
     .then(count => {
         if(count > 0) {
-            res.status(200).json(count)
+            res.status(201).json({message: `Thanks for your feedback. Your review was added.`})
         } else {
             res.status(404).json({ message: 'record not found'})
         }
