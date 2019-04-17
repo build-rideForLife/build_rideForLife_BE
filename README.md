@@ -28,9 +28,9 @@ _example:_
 ```
 {
           username: "greatDriver",
-          phone: 4125967256,
+          phone: "4125967256",
           password: "password",
-          email: greatDriver@gmail.com,
+          email: "greatDriver@rfl.com",
           location: "0.328972, 32.574276",
           driver: true
         }
@@ -48,7 +48,7 @@ _example:_
         "username": "greatDriver",
         "phone": "4125967256",
         "password": "$2a$10$11gRw8B4ypGvgTozUKNdNu9iGhl8S2ce7u2uxHvyMIcNfp7eY0eVa"
-        "email": "greatDriver@gmail.com",
+        "email": "greatDriver@rfl.com",
         "location": "0.328972, 32.574276",
         "driver": 1
 }
@@ -134,7 +134,7 @@ _example:_
 ```
 {
     "message": "Welcome greatRider!",
-    "phone": 4125967234,
+    "phone": "4125967234",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdyZWF0UmlkZXIiLCJwaG9uZSI6IjMyMSIsImRyaXZlciI6MCwiaWF0IjoxNTU1NDI3NDU2LCJleHAiOjE1NTU1MTM4NTZ9.LPMSHq757G9JNoJPU_0Ifq1u3uJvipHqDVTHKYej6uY"
 }
 ```
@@ -185,8 +185,6 @@ _HTTP method:_ **[GET]**
 
 _Method Url:_ `/api/users/:id`
 
-_Protected Route_ | User Only
-
 _HTTP method:_ **[GET]**
 
 #### Response
@@ -207,8 +205,6 @@ _HTTP method:_ **[GET]**
 
 _Method Url:_ `/api/users/:id`
 
-_Protected Route_ | User Only
-
 _HTTP method:_ **[PUT]**
 
 #### Response
@@ -226,8 +222,6 @@ _HTTP method:_ **[PUT]**
 ## **DELETE USER**
 
 _Method Url:_ `/api/users/:id`
-
-_Protected Route_ | User Only
 
 _HTTP method:_ **[DELETE]**
 
@@ -286,9 +280,7 @@ _HTTP method:_ **[GET]**
 
 ## **GET DRIVER BY ID**
 
-_Method Url:_ `/api/driver/:id`
-
-_Protected Route_ | Driver Only
+_Method Url:_ `/api/drivers/:id`
 
 _HTTP method:_ **[GET]**
 
@@ -318,9 +310,7 @@ _HTTP method:_ **[GET]**
 
 ## **UPDATE DRIVER**
 
-_Method Url:_ `/api/driver/:id`
-
-_Protected Route_ | Driver Only
+_Method Url:_ `/api/drivers/:id`
 
 _HTTP method:_ **[PUT]**
 
@@ -338,9 +328,7 @@ _HTTP method:_ **[PUT]**
 
 ## **DELETE DRIVER**
 
-_Method Url:_ `/api/driver/:id`
-
-_Protected Route_ | Driver Only
+_Method Url:_ `/api/drivers/:id`
 
 _HTTP method:_ **[DELETE]**
 
@@ -351,6 +339,47 @@ _HTTP method:_ **[DELETE]**
 ```
 {
     "message": "Driver account removed successfully"
+}
+```
+
+---
+
+---
+
+## **ADD A DRIVER REVIEW**
+
+_Method Url:_ `/api/drivers/reviews`
+
+_HTTP method:_ **[POST]**
+
+#### Body
+
+| name             | type    | required                |
+| ---------------- | ------- | ----------------------- |
+| `driver_id`      | Integer | Yes                     |
+| `user_id`        | Integer | No                      |
+| `rating`         | Integer | No                      |
+| `review`         | String  | No                      |
+
+
+_example:_
+
+```
+{
+      "rider_id": 5,
+      "review": "way too bumpy, water broke on way to hospital",
+      "rating": 1
+
+}
+```
+
+#### Response
+
+##### 201 (Created)
+
+```
+{
+    "message": "Thanks for your feedback. Your review was added."
 }
 ```
 
