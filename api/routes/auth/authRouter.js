@@ -15,39 +15,41 @@ router.post('/register', (req, res) => {
 
         if(user.driver === false){
         db('riders')
-        .insert(user)
-        .then(ids => {
-            const id = ids[0]
-            
-            db('riders')
-            .where({phone: user.phone})
-            .then(users =>{
-                res.status(201).json(users)
-            })
-            .catch(error => {
-                res.status(500).json(error)
-            })
-           })
-        .catch(error => {
-            res.status(500).json({ message: `there was an error registering this user ${error}`})
-        })
-      }
-      if(user.driver === true){
-        db('drivers')
-        .insert(user)
-        .then(ids => {
-          const id = ids[0]
-          db('drivers')
-          .where({phone: user.phone})
-          .then(drivers => {
-            res.status(201).json(drivers)
+        .where({phone: user.phone})
+        .then(rider => {
+          if(rider.length > 0){
+           return res.status(400).json({error: "This phone number exists"})
+          }
+          db('riders')
+          .insert(user)
+          .then(newRider => {
+            return res.status(201).json(newRider)
           })
           .catch(error => {
-            res.status(500).json(error)
+            console.error(error)
+            return res.status(500).json({error: "There was an error adding the rider to the database"})
+          })
+       })
+    }
+      if(user.driver === true){
+        db('drivers')
+        .where({phone: user.phone})
+        .then(driver => {
+          if(driver.length > 0){
+           return res.status(400).json({error: "This phone number exists"})
+          }
+          db('drivers')
+          .insert(user)
+          .then(newDriver => {
+            return res.status(201).json(newDriver)
+          })
+          .catch(error => {
+            console.error(error)
+            return res.status(500).json({error: "There was an error adding the driver to the database"})
           })
         })
       }
- })
+    })
 
  //Login User/Driver
 router.post('/login', (req, res) => {
@@ -60,18 +62,18 @@ router.post('/login', (req, res) => {
     .then(user => {
         if (user && bcrypt.compareSync(password, user.password)) {
           const token = generateToken(user)
-          res.status(200).json({
+          return res.status(200).json({
             message: `Welcome ${user.username}!`,
             driver: user.driver,
             phone: user.phone,
             token,
           });
         } else {
-          res.status(401).json({ message: 'Invalid Credentials' });
+          return res.status(401).json({ message: 'Invalid Credentials' });
         }
       })
     .catch(error => {
-        res.status(500).json(error)
+        return res.status(500).json(error)
     })
   }
   if(driver === true){
@@ -81,18 +83,18 @@ router.post('/login', (req, res) => {
     .then(user => {
         if (user && bcrypt.compareSync(password, user.password)) {
           const token = generateToken(user)
-          res.status(200).json({
+          return res.status(200).json({
             message: `Welcome ${user.username}!`,
             driver: user.driver,
             phone: user.phone,
             token,
           });
         } else {
-          res.status(401).json({ message: 'Invalid Credentials' });
+          return res.status(401).json({ message: 'Invalid Credentials' });
         }
       })
     .catch(error => {
-        res.status(500).json(error)
+        return res.status(500).json(error)
     })
   }
 })

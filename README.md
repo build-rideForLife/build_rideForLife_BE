@@ -1,7 +1,10 @@
 # build_rideForLife_BE
 Ride For Life Backend
 
-SERVER: https://ride-for-life.herokuapp.com/
+
+##Base URL
+
+https://ride-for-life.herokuapp.com/
 
 
 # AUTH ROUTES
@@ -10,7 +13,7 @@ SERVER: https://ride-for-life.herokuapp.com/
 
 _Method Url:_ `/api/register`
 
-_HTTP method:_ **[POST]**
+_HTTP method:_ `POST`
 
 #### Body
 
@@ -60,7 +63,7 @@ _example:_
 
 _Method Url:_ `/api/register`
 
-_HTTP method:_ **[POST]**
+_HTTP method:_ `POST`
 
 #### Body
 
@@ -107,7 +110,7 @@ _example:_
 _Riders/Drivers Method Url:_ `/api/login`  
 
 
-_HTTP method:_ **[POST]**
+_HTTP method:_ `POST`
 
 #### Body
 
@@ -147,7 +150,7 @@ _example:_
 
 _Method Url:_ `/api/users`
 
-_HTTP method:_ **[GET]**
+_HTTP method:_ `GET`
 
 #### Response
 
@@ -185,7 +188,7 @@ _HTTP method:_ **[GET]**
 
 _Method Url:_ `/api/users/:id`
 
-_HTTP method:_ **[GET]**
+_HTTP method:_ `GET`
 
 #### Response
 
@@ -205,7 +208,7 @@ _HTTP method:_ **[GET]**
 
 _Method Url:_ `/api/users/:id`
 
-_HTTP method:_ **[PUT]**
+_HTTP method:_ `PUT`
 
 #### Response
 
@@ -223,7 +226,7 @@ _HTTP method:_ **[PUT]**
 
 _Method Url:_ `/api/users/:id`
 
-_HTTP method:_ **[DELETE]**
+_HTTP method:_ `DELETE`
 
 #### Response
 
@@ -244,7 +247,7 @@ _HTTP method:_ **[DELETE]**
 
 _Method Url:_ `/api/drivers`
 
-_HTTP method:_ **[GET]**
+_HTTP method:_ `GET`
 
 #### Response
 
@@ -282,7 +285,7 @@ _HTTP method:_ **[GET]**
 
 _Method Url:_ `/api/drivers/:id`
 
-_HTTP method:_ **[GET]**
+_HTTP method:_ `GET`
 
 #### Response
 
@@ -312,7 +315,7 @@ _HTTP method:_ **[GET]**
 
 _Method Url:_ `/api/drivers/:id`
 
-_HTTP method:_ **[PUT]**
+_HTTP method:_ `PUT`
 
 #### Response
 
@@ -330,7 +333,7 @@ _HTTP method:_ **[PUT]**
 
 _Method Url:_ `/api/drivers/:id`
 
-_HTTP method:_ **[DELETE]**
+_HTTP method:_ `DELETE`
 
 #### Response
 
@@ -350,7 +353,7 @@ _HTTP method:_ **[DELETE]**
 
 _Method Url:_ `/api/drivers/reviews`
 
-_HTTP method:_ **[POST]**
+_HTTP method:_ `POST`
 
 #### Body
 
