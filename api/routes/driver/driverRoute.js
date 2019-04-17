@@ -36,8 +36,6 @@ router.get('/:id', restrict, (req, res) => {
     })
 })
 
-
-
 //abililty for driver to edit profile
 router.put('/:id', restrict, (req, res) => {
     db('drivers')
