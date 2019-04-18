@@ -9,7 +9,7 @@ const restrict = require('../auth/restricted-middleware')
 
 
 // TESTING TO SEE IF AUTH WORKS
-router.get('/',  restrict, (req, res) => {
+router.get('/',  (req, res) => {
     db('riders')
     .then(users => {
         res.status(200).json(users)
@@ -20,7 +20,7 @@ router.get('/',  restrict, (req, res) => {
 })
 
 // get by id
-router.get('/:id',  restrict,(req, res) => {
+router.get('/:id',  (req, res) => {
     db('riders')
     .select('riders_id', 'username', 'phone')
     .where({ riders_id: req.params.id})
@@ -35,7 +35,7 @@ router.get('/:id',  restrict,(req, res) => {
 
 
 // update for phone or whatever
-router.put('/:id', restrict, (req, res) => {
+router.put('/:id', (req, res) => {
     db('riders')
     .where({ riders_id: req.params.id})
     .update(req.body)
@@ -55,7 +55,7 @@ router.put('/:id', restrict, (req, res) => {
 
 
 // delete acct if they want to 
-router.delete('/:id', restrict, (req, res) => {
+router.delete('/:id', (req, res) => {
     db('riders')
     .where({ riders_id: req.params.id })
     .del()

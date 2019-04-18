@@ -94,7 +94,7 @@ _example:_
 ```
 {
     
-        "user_id": 1,
+        "riders_id": 1,
         "username": "greatRider",
         "phone": 4125968421,
         "password": "$2a$10$11gRw8B4ypGvgTozUKNdNu9iGhl8S2ce7u2uxHvyMIcNfp7eY0eVa",
@@ -297,12 +297,12 @@ _HTTP method:_ `GET`
     "username": "greatDriver",
     "reviews": [
         {
-            "rider_id": 2,
+            "riders_id": 2,
             "review": "great ride",
             "rating": 5
         },
         {
-          "rider_id": 5,
+          "riders_id": 5,
           "review": "way too bumpy, water broke on way to hospital",
           "rating": 2
         }
@@ -360,7 +360,7 @@ _HTTP method:_ `POST`
 | name             | type    | required                |
 | ---------------- | ------- | ----------------------- |
 | `driver_id`      | Integer | Yes                     |
-| `user_id`        | Integer | No                      |
+| `riders_id`      | Integer | No                      |
 | `rating`         | Integer | No                      |
 | `review`         | String  | No                      |
 
@@ -369,7 +369,7 @@ _example:_
 
 ```
 {
-      "rider_id": 5,
+      "riders_id": 5,
       "review": "way too bumpy, water broke on way to hospital",
       "rating": 1
 
