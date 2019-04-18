@@ -64,6 +64,7 @@ router.post('/login', (req, res) => {
           const token = generateToken(user)
           return res.status(200).json({
             message: `Welcome ${user.username}!`,
+            username: user.username, 
             rider_id: user.riders_id,
             driver: user.driver,
             phone: user.phone,
@@ -86,6 +87,7 @@ router.post('/login', (req, res) => {
           const token = generateToken(user)
           return res.status(200).json({
             message: `Welcome ${user.username}!`,
+            username: user.username,
             driver_id: user.driver_id,
             driver: user.driver,
             phone: user.phone,
