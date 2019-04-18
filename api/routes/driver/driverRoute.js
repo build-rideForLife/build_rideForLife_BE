@@ -5,7 +5,7 @@ const restrict = require('../auth/restricted-middleware')
 
 
 //TESTING TO SEE IF OTHER ENDPOINTS WORK
-router.get('/',  restrict, (req, res) => {
+router.get('/', (req, res) => {
     db('drivers')
     .then(drivers => {
         res.status(200).json(drivers)
@@ -16,7 +16,7 @@ router.get('/',  restrict, (req, res) => {
 })
 
 //Gets Driver by ID and Reviews
-router.get('/:id', restrict, (req, res) => {
+router.get('/:id', (req, res) => {
     const { id } = req.params;
     db('drivers')
     .where({'drivers.driver_id': id})
@@ -37,7 +37,7 @@ router.get('/:id', restrict, (req, res) => {
 })
 
 //abililty for driver to edit profile
-router.put('/:id', restrict, (req, res) => {
+router.put('/:id', (req, res) => {
     db('drivers')
     .where({ driver_id: req.params.id})
     .update(req.body)
@@ -55,7 +55,7 @@ router.put('/:id', restrict, (req, res) => {
 })
 
 //Post a review
-router.post('/reviews', restrict, (req, res) => {
+router.post('/reviews', (req, res) => {
     const {driver_id, rating, review, rider_id}= req.body
     db('reviews')
     .where({ driver_id: req.params.id})
@@ -73,7 +73,7 @@ router.post('/reviews', restrict, (req, res) => {
 })
 
 //ability for driver to delete acct
-router.delete('/:id', restrict, (req, res) => {
+router.delete('/:id', (req, res) => {
     db('drivers')
     .where({ driver_id: req.params.id })
     .del()
