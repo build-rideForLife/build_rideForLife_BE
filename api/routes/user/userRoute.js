@@ -9,7 +9,7 @@ const restrict = require('../auth/restricted-middleware')
 
 
 // TESTING TO SEE IF AUTH WORKS
-router.get('/',  (req, res) => {
+router.get('/', (req, res) => {
     db('riders')
     .then(users => {
         res.status(200).json(users)
@@ -26,6 +26,9 @@ router.get('/:id', restrict, (req, res) => {
     .where({ riders_id: req.params.id})
     .first()
     .then(rider => {
+        if(!rider){
+            res.status(404).json({error: "This user/rider does not exist"})
+        }
         res.status(200).json(rider)
     })
     .catch(err => {
@@ -70,7 +73,6 @@ router.delete('/:id', restrict, (req, res) => {
         res.status(500).json({ message: `there was an error deleting ${error}`})
     })
 })
-
 
 
 
