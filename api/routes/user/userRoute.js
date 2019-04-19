@@ -20,7 +20,7 @@ router.get('/',  (req, res) => {
 })
 
 // get by id
-router.get('/:id',  (req, res) => {
+router.get('/:id', restrict, (req, res) => {
     db('riders')
     .select('riders_id', 'username', 'phone')
     .where({ riders_id: req.params.id})
@@ -35,7 +35,7 @@ router.get('/:id',  (req, res) => {
 
 
 // update for phone or whatever
-router.put('/:id', (req, res) => {
+router.put('/:id', restrict, (req, res) => {
     db('riders')
     .where({ riders_id: req.params.id})
     .update(req.body)
@@ -55,7 +55,7 @@ router.put('/:id', (req, res) => {
 
 
 // delete acct if they want to 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', restrict, (req, res) => {
     db('riders')
     .where({ riders_id: req.params.id })
     .del()
