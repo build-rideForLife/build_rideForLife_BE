@@ -17,4 +17,21 @@ describe('Register', () => {
             expect(response.type).toBe('application/json')
         })
     })
+    describe('AuthRouter Login', () => {
+
+        describe('POST /api/login', () =>{
+            it('Should respond with 200 Status code on successful login', () => {
+                return request(server)
+                .post('/api/login')
+                .send({
+                    "phone": "4152320090",
+                    "password": "cool",
+                    "driver": false
+                })
+                .set('Accept', 'application/json')
+                .expect('Content-Type', /json/)
+                .expect(200)
+            })
+        })
+    })
 })
