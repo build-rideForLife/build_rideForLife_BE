@@ -5,7 +5,7 @@ const restrict = require('../auth/restricted-middleware')
 
 
 //TESTING TO SEE IF OTHER ENDPOINTS WORK
-router.get('/', (req, res) => {
+router.get('/', restrict, (req, res) => {
     db('drivers')
     .then(drivers => {
         res.status(200).json(drivers)
