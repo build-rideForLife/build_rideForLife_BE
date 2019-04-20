@@ -1,6 +1,6 @@
 const request = require('supertest')
 const server = require('../../server.js')
-// const db = require('../../../data/dbConfig.js')
+const db = require('../../../data/dbConfig.js')
 // const Riders = require('./user-model.js')
 
 describe('User/Rider Router', () => {

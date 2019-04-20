@@ -34,7 +34,7 @@ _example:_
           phone: "4125967256",
           password: "password",
           email: "greatDriver@rfl.com",
-          location: "0.328972, 32.574276",
+          location: "CA",
           driver: true
         }
 ```
@@ -78,10 +78,10 @@ _example:_
 
 ```
 {
-          username: "greatRider",
-          phone: "4125968421",
-          password: "password",
-          driver: false
+          "username": "greatRider",
+          "phone": "4125968421",
+          "password": "password",
+          "driver": false
         }
 ```
 
@@ -123,8 +123,8 @@ _example:_
 
 ```
 {
-  phone: "4125968345",
-  password: "password"
+  "phone": "4125968345",
+  "password": "password"
 }
 ```
 
@@ -260,6 +260,7 @@ _HTTP method:_ `GET`
     "username": "greatDriver",
     "phone": "4125967234",
     "password": "password",
+    "email": "greatDriver@rfl.com",
     "driver": 1
   },
     {
@@ -267,6 +268,7 @@ _HTTP method:_ `GET`
     "username": "greatDriver2",
     "phone": "4125967345",
     "password": "password",
+    "email": "greatDriver2@rfl.com",
     "driver": 1
   },
     {
@@ -274,6 +276,7 @@ _HTTP method:_ `GET`
     "username": "greatDriver3",
     "phone": "4125967456",
     "password": "password",
+    "email": "greatDriver3@rfl.com",
     "driver": 1
   },
 ]
@@ -295,14 +298,14 @@ _HTTP method:_ `GET`
   {
     "driver_id": 1,
     "username": "greatDriver",
-    "reviews": [
+    "review": [
         {
-            "riders_id": 2,
+            "username": RiderProfile2,
             "review": "great ride",
             "rating": 5
         },
         {
-          "riders_id": 5,
+          "username": RiderProfile5,
           "review": "way too bumpy, water broke on way to hospital",
           "rating": 2
         }
@@ -360,7 +363,7 @@ _HTTP method:_ `POST`
 | name             | type    | required                |
 | ---------------- | ------- | ----------------------- |
 | `driver_id`      | Integer | Yes                     |
-| `riders_id`      | Integer | No                      |
+| `rider_id`      | Integer | Yes                      |
 | `rating`         | Integer | No                      |
 | `review`         | String  | No                      |
 
@@ -369,7 +372,8 @@ _example:_
 
 ```
 {
-      "riders_id": 5,
+      "driver_id:
+      "rider_id": 5,
       "review": "way too bumpy, water broke on way to hospital",
       "rating": 1
 

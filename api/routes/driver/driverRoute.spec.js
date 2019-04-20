@@ -3,7 +3,7 @@ const server = require('../../server');
 
 const db = require('../../../data/dbConfig')
 
-describe('server', () => {
+describe.skip('server', () => {
     // beforeEach(async () => {
     //     await db('drivers').truncate();
     //   }); 
